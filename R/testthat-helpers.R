@@ -1,5 +1,5 @@
 all_attr_but_dim <- function(object, expected) {
-  ignore_attr <- names(attributes(object))
+  ignore_attr <- as.character(names(attributes(object)))
   ignore_attr <- c(ignore_attr, names(attributes(expected)))
   ignore_attr[ignore_attr != "dim"]
 }

@@ -39,7 +39,7 @@ abdom$resid <- resid(m1)
 
 ggplot(abdom, aes(x, resid)) +
   geom_point(color = "darkgray", size = 1) +
-  geom_hline(yintercept = 0, size = 0.5) +
+  geom_hline(yintercept = 0, linewidth = 0.5) +
   xlab("Age [weeks]") +
   ylab("Residuals")
 
@@ -53,9 +53,9 @@ abdom$lower <- abdom$mu - 1.96 * abdom$sigma
 
 ggplot(abdom, aes(x, y)) +
   geom_point(color = "darkgray", size = 1) +
-  geom_line(aes(y = mu), size = 0.7) +
-  geom_line(aes(y = upper), size = 0.3) +
-  geom_line(aes(y = lower), size = 0.3) +
+  geom_line(aes(y = mu), linewidth = 0.7) +
+  geom_line(aes(y = upper), linewidth = 0.3) +
+  geom_line(aes(y = lower), linewidth = 0.3) +
   xlab("Age [weeks]") +
   ylab("Size [mm]")
 
@@ -70,9 +70,9 @@ abdom$lower <- abdom$mu - 1.96 * abdom$sigma
 
 ggplot(abdom, aes(x, y)) +
   geom_point(color = "darkgray", size = 1) +
-  geom_line(aes(y = mu), size = 0.7) +
-  geom_line(aes(y = upper), size = 0.3) +
-  geom_line(aes(y = lower), size = 0.3) +
+  geom_line(aes(y = mu), linewidth = 0.7) +
+  geom_line(aes(y = upper), linewidth = 0.3) +
+  geom_line(aes(y = lower), linewidth = 0.3) +
   xlab("Age [weeks]") +
   ylab("Size [mm]")
 
@@ -105,14 +105,14 @@ p1 + p2
 theme_update(axis.title.y.left = element_text(margin = margin(r = 16.5)))
 
 ## ----abdom-bench-1, eval = FALSE----------------------------------------------
-#  library(gamlss)
-#  library(mgcv)
-#  
-#  bench <- microbenchmark::microbenchmark(
-#    lmls = lmls(y ~ poly(x, 2), ~ x, data = abdom),
-#    mgcv = gam(list(y ~ poly(x, 2), ~ x), family = gaulss(), data = abdom),
-#    gamlss = gamlss(y ~ poly(x, 2), ~ x, data = abdom)
-#  )
+# library(gamlss)
+# library(mgcv)
+# 
+# bench <- microbenchmark::microbenchmark(
+#   lmls = lmls(y ~ poly(x, 2), ~ x, data = abdom),
+#   mgcv = gam(list(y ~ poly(x, 2), ~ x), family = gaulss(), data = abdom),
+#   gamlss = gamlss(y ~ poly(x, 2), ~ x, data = abdom)
+# )
 
 ## ----abdom-bench-2, echo = FALSE, fig.cap = "(ref:abdom-bench-2)"-------------
 load("abdom-bench.RData")
@@ -126,8 +126,8 @@ ggplot(bench, aes(time / 1e6, expr, color = expr, fill = expr)) +
   ylab("Package")
 
 ## ----info-beta, eval = FALSE--------------------------------------------------
-#  crossprod(X / scale)
+# crossprod(X / scale)
 
 ## ----info-gamma, eval = FALSE-------------------------------------------------
-#  2 * crossprod(Z)
+# 2 * crossprod(Z)
 
